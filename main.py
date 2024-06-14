@@ -1,8 +1,9 @@
 import streamlit as st
-from langchain_community.llms import LlamaCpp
+from langchain.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.base import BaseCallbackHandler
+import os
 
 # StreamHandler to intercept streaming output from the LLM.
 # This makes it appear that the Language Model is "typing"
@@ -29,23 +30,20 @@ def create_chain(system_prompt):
     stream_handler = StreamHandler(st.empty())
     callback_manager = CallbackManager([stream_handler])
 
-    model_file = "https://huggingface.co/mahiatlinux/Mistral-7B-Instruct-v0.2-Q2_K-GGUF/blob/main/mistral-7b-instruct-v0.2.Q2_K.gguf"
-    #model_file = "/home/letro/"
+    # Replace with your actual HuggingFace API token
+    #HUGGINGFACE_API_TOKEN = "your_huggingface_api_token"
+    HUGGINGFACE_API_TOKEN = os.environ.get('HUGGINGFACE_API_TOKEN')
 
-    #selected_model = st.selectbox("Select a model", models)
-    #model_file += selected_model
+    # The repo_id should point to the model you want to use
+    repo_id = "mahiatlinux/Mistral-7B-Instruct-v0.2-Q2_K-GGUF"
 
-    llm = LlamaCpp(
-        model_path=model_file,
+    llm = HuggingFaceHub(
+        repo_id=repo_id,
+        huggingfacehub_api_token=HUGGINGFACE_API_TOKEN,
         temperature=0,
         max_tokens=512,
         top_p=1,
         callback_manager=callback_manager,
-        n_gpu_layers=-1,
-        n_batch=512,
-        n_ctx=4096,
-        stop=["[INST]"],
-        verbose=False,
         streaming=True,
     )
 
