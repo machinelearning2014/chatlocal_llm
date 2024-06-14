@@ -29,7 +29,7 @@ def create_chain(system_prompt):
     stream_handler = StreamHandler(st.empty())
     callback_manager = CallbackManager([stream_handler])
 
-    model_file = "mistral-7b-instruct-v0.2.Q2_K.gguf"
+    model_file = "https://huggingface.co/mahiatlinux/Mistral-7B-Instruct-v0.2-Q2_K-GGUF/tree/main/mistral-7b-instruct-v0.2.Q2_K.gguf"
     #model_file = "/home/letro/"
 
     #selected_model = st.selectbox("Select a model", models)
