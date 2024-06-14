@@ -1,4 +1,4 @@
 streamlit
 langchain_community
 langchain
-CMAKE_ARGS="-DLLAMA_CUDA=on" pip install llama-cpp-python
+llama-cpp-python
