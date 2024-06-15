@@ -32,7 +32,7 @@ def create_chain(system_prompt):
 
     # Replace with your actual HuggingFace API token
     #HUGGINGFACE_API_TOKEN = "your_huggingface_api_token"
-    HUGGINGFACE_API_TOKEN = os.environ.get('HUGGINGFACE_API_TOKEN')
+    HUGGINGFACE_API_TOKEN = os.environ.get('HUGGINGFACEHUB_API_TOKEN')
 
     # The repo_id should point to the model you want to use
     repo_id = "mahiatlinux/Mistral-7B-Instruct-v0.2-Q2_K-GGUF"
