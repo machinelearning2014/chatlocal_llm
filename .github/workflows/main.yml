@@ -11,5 +11,5 @@ jobs:
         
     - name: Run Python script
       env:
-        HUGGINGFACE_API_TOKEN: ${{ secrets.HUGGINGFACE_API_TOKEN }}
+        HUGGINGFACEHUB_API_TOKEN: ${{ secrets.HUGGINGFACEHUB_API_TOKEN }}
       run: python main.py
